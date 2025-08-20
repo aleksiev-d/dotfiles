@@ -1,0 +1,49 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "eslint.run": "onSave",
+  "explorer.confirmDelete": false,
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "workbench.colorTheme": "Darcula",
+  "debug.onTaskErrors": "showErrors",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.fontLigatures": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  "editor.mouseWheelZoom": true,
+  "window.zoomLevel": 3,
+  "editor.linkedEditing": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.lineNumbers": "relative",
+  "window.menuBarVisibility": "compact",
+  "editor.minimap.enabled": false,
+
+  // vim settings
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "#a9dc7660",
+  "vim.highlightedyank.duration": 250,
+  "vim.leader": "<Space>",
+  "vim.easymotion": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "n", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "n", "c"],
+      "commands": ["workbench.action.chat.open"]
+    },
+    {
+      "before": ["<CR>"],
+      "commands": [":nohl"]
+    }
+  ]
+}
