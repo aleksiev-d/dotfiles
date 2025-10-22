@@ -1,1 +1,212 @@
-/Users/danailaleksiev/.ideavimrc
+"" Base Settings
+"" ========================================================
+
+set scrolloff=10
+set showmode
+set showcmd
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set nowrapscan
+
+set visualbell
+
+set easymotion
+set notimeout
+
+" Use system clipboard
+set clipboard+=unnamed
+
+" Set leader key
+let mapleader = " "
+
+" Show all vim keys
+let g:WhichKey_ShowVimActions = "true"
+
+"" Plugin Settings
+"" ========================================================
+
+set highlightedyank
+set nerdtree
+
+" Which-key settings
+set which-key
+set timeoutlen=5000
+let g:WhichKey_FontSize = 16
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+"" Handlers
+"" ========================================================
+sethandler <C-a> a:vim
+sethandler <C-b> a:vim
+sethandler <C-c> a:vim
+sethandler <C-d> a:vim
+sethandler <C-e> a:vim
+sethandler <C-f> a:vim
+sethandler <C-g> a:vim
+sethandler <C-h> a:vim
+sethandler <C-i> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+sethandler <C-l> a:vim
+sethandler <C-m> a:vim
+sethandler <C-n> a:vim
+sethandler <C-o> a:vim
+sethandler <C-p> a:vim
+sethandler <C-q> a:vim
+sethandler <C-r> a:vim
+sethandler <C-s> a:vim
+sethandler <C-t> a:vim
+sethandler <C-u> a:vim
+sethandler <C-v> a:vim
+sethandler <C-v> a:vim
+sethandler <C-w> a:vim
+sethandler <C-x> a:vim
+sethandler <C-y> a:vim
+sethandler <C-z> a:vim
+
+"" Leader key mappings
+"" ========================================================
+nnoremap <leader>9 :source ~/.ideavimrc<CR>
+let g:WhichKeyDesc_reload = "<leader>9 Reload ~/.ideavimrc"
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"
+let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract method"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
+
+" Splits
+nmap <leader>\ <Action>(SplitVertically)
+nmap <leader>- <Action>(SplitHorizontally)
+
+let g:WhichKeyDesc_splitvertically = "<leader>\ Split vertically"
+let g:WhichKeyDesc_splithorizontally= "<leader>- Split horizontally"
+
+" Go to declaration
+nmap <leader>d <Action>(GotoDeclaration)
+let g:WhichKeyDesc_gotodeclaration = "<leader>d Go to Definition"
+
+" Go to implementation
+nmap <leader>e <Action>(GotoImplementation)
+let g:WhichKeyDesc_hoverinfo = "<leader>e Go to Implementation"
+
+" Hover info
+nmap <leader>k <Action>(ShowHoverInfo)
+let g:WhichKeyDesc_hoverinfo = "<leader>k Hover info"
+
+" Tabs
+nmap <leader>tp <Action>(PinActiveEditorTab)
+nmap <leader>tc <Action>(CloseAllUnpinnedEditors)
+nmap <leader>tx <Action>(CloseAllEditors)
+
+let g:WhichKeyDesc_tabs = "<leader>t Tabs"
+let g:WhichKeyDesc_tabs_pin = "<leader>tp Pin"
+let g:WhichKeyDesc_tabs_close_all_but_pinned = "<leader>tc Close all but pinned"
+let g:WhichKeyDesc_tabs_close_all = "<leader>tx Close all"
+
+" Navigation
+nmap <leader>nc <Action>(ActivateCommitToolWindow)
+nmap <leader>ng <Action>(ActivateVersionControlToolWindow)
+nmap <leader>nn <Action>(ActivateNuGetToolWindow)
+nmap <leader>nt <Action>(ActivateUnitTestsToolWindow)
+nmap <leader>ne <Action>(ActivateProjectToolWindow)
+
+let g:WhichKeyDesc_navigation = "<leader>n Navigation"
+let g:WhichKeyDesc_navigation_commit = "<leader>nc Commit"
+let g:WhichKeyDesc_navigation_git = "<leader>ng Git"
+let g:WhichKeyDesc_navigation_nuget = "<leader>nn NuGet"
+let g:WhichKeyDesc_navigation_tests = "<leader>nt Tests"
+let g:WhichKeyDesc_navigation_explorer = "<leader>ne Explorer"
+
+" Go to code
+nmap <leader>jd <Action>(GotoDeclaration)
+nmap <leader>jy <Action>(GotoTypeDeclaration)
+nmap <leader>ji <Action>(GotoImplementation)
+nmap <leader>jb <Action>(GotoSuperMethod)
+nmap <leader>ju <Action>(ShowUsages)
+nmap <leader>jq <Action>(QuickImplementations)
+
+let g:WhichKeyDesc_jumpto = "<leader>j Jump to X"
+let g:WhichKeyDesc_jumpto_declaration = "<leader>jd Definition"
+let g:WhichKeyDesc_jumpto_type_declaration = "<leader>jy Type Definition"
+let g:WhichKeyDesc_jumpto_implementation = "<leader>ji Implementation"
+let g:WhichKeyDesc_jumpto_base = "<leader>jb Base"
+let g:WhichKeyDesc_jumpto_usages = "<leader>ju Usages"
+let g:WhichKeyDesc_jumpto_quickimplementation = "<leader>jq Quick Implementation"
+
+" Git
+nmap <leader>gb <Action>(Git.Branches)
+nmap <leader>ga <Action>(Annotate)
+
+let g:WhichKeyDesc_git = "<leader>g Git"
+let g:WhichKeyDesc_git_branches = "<leader>gb Branches"
+let g:WhichKeyDesc_git_annotate = "<leader>ga Annotate"
+
+" Project
+nmap <leader>ab <Action>(BuildSolutionAction)
+nmap <leader>ar <Action>(Run)
+nmap <leader>ad <Action>(Debug)
+nmap <leader>as <Action>(Stop)
+
+let g:WhichKeyDesc_project = "<leader>a Project"
+let g:WhichKeyDesc_project_build = "<leader>ab Build"
+let g:WhichKeyDesc_project_run = "<leader>ar Run"
+let g:WhichKeyDesc_project_debug = "<leader>ad Debug"
+let g:WhichKeyDesc_project_stop = "<leader>as Stop"
+
+" EF Core
+nmap <leader>ma <Action>(EfCore.Features.Migrations.AddMigrationAction)
+
+let g:WhichKeyDesc_migration = "<leader>m EF Core"
+let g:WhichKeyDesc_migration_add = "<leader>ma Add migration"
+
+" Unit Testing
+nmap <leader>sr <Action>(RiderUnitTestRunContextAction)
+nmap <leader>sd <Action>(RiderUnitTestDebugContextAction)
+nmap <leader>sa <Action>(RiderUnitTestRunSolutionAction)
+
+let g:WhichKeyDesc_testing = "<leader>s Testing"
+let g:WhichKeyDesc_testing_run = "<leader>sr Run test at cursor"
+let g:WhichKeyDesc_testing_debug = "<leader>sd Debug test at cursor"
+let g:WhichKeyDesc_testing_debug = "<leader>sa Run all tests in solution"
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+
+" Close current tab
+map <leader>q <action>(CloseContent)
+
+" Rider-compatible bookmark functionality with <leader>B
+nmap <leader>bt <Action>(ToggleBookmark)
+nmap <leader>bs <Action>(ShowBookmarks)
+nmap <leader>bn <Action>(GotoNextBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>ba <Action>(ToggleBookmarkWithMnemonic)
+
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+"" Custom mappings
+"" ========================================================
+inoremap jk <Esc>
+
+"" Organize imports and format code
+nmap <leader>o <Action>(OptimizeImports)
+nmap <leader>i <Action>(AutoIndentLines)
