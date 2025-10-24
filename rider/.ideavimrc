@@ -91,11 +91,15 @@ let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
 let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
 
 " Splits
-nmap <leader>\ <Action>(SplitVertically)
-nmap <leader>- <Action>(SplitHorizontally)
+nmap <leader>sr <Action>(RiderUnitTestRunContextAction)
+nmap <leader>sd <Action>(MoveTabDown)
+nmap <leader>sr <Action>(MoveTabRight)
+nmap <leader>su <Action>(UnsplitAll)
 
-let g:WhichKeyDesc_splitvertically = "<leader>\ Split vertically"
-let g:WhichKeyDesc_splithorizontally= "<leader>- Split horizontally"
+let g:WhichKeyDesc_splits = "<leader>s Splits"
+let g:WhichKeyDesc_splits_down = "<leader>sd Split and move tab down"
+let g:WhichKeyDesc_splits_right = "<leader>sr Split and move tab right"
+let g:WhichKeyDesc_splits_unsplit_all = "<leader>su Unsplit all"
 
 " Go to declaration
 nmap <leader>d <Action>(GotoDeclaration)
@@ -169,6 +173,15 @@ let g:WhichKeyDesc_project_run = "<leader>ar Run"
 let g:WhichKeyDesc_project_debug = "<leader>ad Debug"
 let g:WhichKeyDesc_project_stop = "<leader>as Stop"
 
+" Scratches
+nmap <leader>wb <Action>(NewScratchBuffer)
+nmap <leader>ws <Action>(Scratch.ShowFilesPopup)
+
+let g:WhichKeyDesc_scratches = "<leader>w Scratches"
+let g:WhichKeyDesc_scratches_show = "<leader>ws Show scratches"
+let g:WhichKeyDesc_scratches_add_buffer = "<leader>wb New scratch buffer"
+let g:WhichKeyDesc_scratches_add_file = "<leader>wf New scratch file"
+ss
 " EF Core
 nmap <leader>ma <Action>(EfCore.Features.Migrations.AddMigrationAction)
 
@@ -176,14 +189,14 @@ let g:WhichKeyDesc_migration = "<leader>m EF Core"
 let g:WhichKeyDesc_migration_add = "<leader>ma Add migration"
 
 " Unit Testing
-nmap <leader>sr <Action>(RiderUnitTestRunContextAction)
-nmap <leader>sd <Action>(RiderUnitTestDebugContextAction)
-nmap <leader>sa <Action>(RiderUnitTestRunSolutionAction)
+nmap <leader>qr <Action>(RiderUnitTestRunContextAction)
+nmap <leader>qd <Action>(RiderUnitTestDebugContextAction)
+nmap <leader>qa <Action>(RiderUnitTestRunSolutionAction)
 
-let g:WhichKeyDesc_testing = "<leader>s Testing"
-let g:WhichKeyDesc_testing_run = "<leader>sr Run test at cursor"
-let g:WhichKeyDesc_testing_debug = "<leader>sd Debug test at cursor"
-let g:WhichKeyDesc_testing_debug = "<leader>sa Run all tests in solution"
+let g:WhichKeyDesc_testing = "<leader>q Testing"
+let g:WhichKeyDesc_testing_run = "<leader>qr Run test at cursor"
+let g:WhichKeyDesc_testing_debug = "<leader>qd Debug test at cursor"
+let g:WhichKeyDesc_testing_debug = "<leader>qa Run all tests in solution"
 
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
@@ -210,3 +223,4 @@ inoremap jk <Esc>
 "" Organize imports and format code
 nmap <leader>o <Action>(OptimizeImports)
 nmap <leader>i <Action>(AutoIndentLines)
+nmap <leader>p <Action>(ReformatCode)
