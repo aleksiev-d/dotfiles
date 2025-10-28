@@ -6,13 +6,15 @@
   "editor.minimap.enabled": false,
   "workbench.tips.enabled": false,
   "breadcrumbs.enabled": false,
+  "files.autoSave": "onFocusChange",
   // choose what you like! I like tabs
   "workbench.editor.showTabs": "multiple",
   "window.commandCenter": false,
   // if you opt for tabs :)
   "window.density.editorTabHeight": "compact",
-  "window.menuBarVisibility": "compact",
-  "window.restoreWindows": "none",
+  "window.restoreWindows": "preserve",
+  "files.hotExit": "onExit",
+  "workbench.editor.restoreViewState": true,
   // vscodevim settings
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
@@ -25,6 +27,13 @@
   "vim.highlightedyank.color": "rgba(250, 189, 47, 0.5)",
   "vim.highlightedyank.textColor": "#202020",
   "vim.highlightedyank.duration": 150,
+  // other settings
+  "terminal.integrated.fontFamily": "monospace",
+  "explorer.confirmDelete": false,
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": true,
+  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+  "window.autoDetectColorScheme": true,
   // statusbar colors
   "vim.statusBarColorControl": false,
   "vim.statusBarColors.normal": [
@@ -487,10 +496,4 @@
       "command": "editor.action.formatDocument"
     }
   ],
-  "terminal.integrated.fontFamily": "monospace",
-  "explorer.confirmDelete": false,
-  "git.blame.editorDecoration.enabled": false,
-  "git.blame.statusBarItem.enabled": true,
-  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
-  "window.autoDetectColorScheme": true,
 }
