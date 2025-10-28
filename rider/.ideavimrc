@@ -228,4 +228,5 @@ nmap <leader>o <Action>(OptimizeImports)
 nmap <leader>i <Action>(AutoIndentLines)
 nmap <leader>p <Action>(ReformatCode)
 
+nnoremap <Esc> :nohlsearch<CR>
 nmap <leader>` :marks<CR>
