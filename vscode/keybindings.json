@@ -81,29 +81,29 @@
     // harpoon
     {
         "key": "ctrl+h",
-        "command": "vscode-harpoon.gotoEditor1",
+        "command": "vscode-harpoon.gotoEditor1"
     },
     {
         "key": "ctrl+j",
-        "command": "vscode-harpoon.gotoEditor2",
+        "command": "vscode-harpoon.gotoEditor2"
     },
     {
         "key": "ctrl+k",
-        "command": "vscode-harpoon.gotoEditor3",
+        "command": "vscode-harpoon.gotoEditor3"
     },
     {
         "key": "ctrl+l",
-        "command": "vscode-harpoon.gotoEditor4",
+        "command": "vscode-harpoon.gotoEditor4"
     },
     // sidebar visibility
     {
         "key": "ctrl+s",
-        "command": "workbench.action.toggleSidebarVisibility",
+        "command": "workbench.action.toggleSidebarVisibility"
     },
     {
         "key": "ctrl+s",
         "command": "workbench.action.focusSideBar",
-        "when": "editorTextFocus",
+        "when": "editorTextFocus"
     },
     {
         "key": "ctrl+s",
@@ -117,34 +117,34 @@
     },
     // Terminal
     {
-        "key": "cmd+t",
+        "key": "ctrl+t",
         "command": "workbench.action.terminal.new",
         "when": "terminalFocus && (terminalProcessSupported || terminalWebExtensionContributedProfile)"
     },
     {
-        "key": "cmd+w",
+        "key": "ctrl+w",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus"
     },
     // Navigation
     {
-        "key": "cmd+[",
+        "key": "ctrl+[",
         "command": "workbench.action.navigateBack",
         "when": "canNavigateBack"
     },
     {
-        "key": "cmd+]",
+        "key": "ctrl+]",
         "command": "workbench.action.navigateForward",
         "when": "canNavigateForward"
     },
     {
-        "key": "cmd+[",
+        "key": "ctrl+[",
         "command": "-editor.action.outdentLines",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "cmd+]",
+        "key": "ctrl+]",
         "command": "-editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"
-    },
+    }
 ]
