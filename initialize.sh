@@ -1,12 +1,15 @@
 // Remove existing files and create symbolic links to the configuration files
-rm ~/Library/Application\ Support/Code/User/keybindings.json
-ln -s  ~/Documents/configurations/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+CONFIG_DIR=~/Documents/configurations
+VSCODE_USER_DIR=~/Library/Application\ Support/Code/User
 
-rm ~/Library/Application\ Support/Code/User/settings.json
-ln -s  ~/Documents/configurations/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+rm $VSCODE_USER_DIR/keybindings.json
+ln -s  $CONFIG_DIR/vscode/keybindings.json $VSCODE_USER_DIR/keybindings.json
+
+rm $VSCODE_USER_DIR/settings.json
+ln -s  $CONFIG_DIR/vscode/settings.json $VSCODE_USER_DIR/settings.json
 
 rm ~/.zshrc
-ln -s ~/Documents/configurations/zshrc/.zshrc ~/.zshrc
+ln -s $CONFIG_DIR/zshrc/.zshrc ~/.zshrc
 
 rm ~/.ideavimrc
-ln -s ~/Documents/configurations/rider/.ideavimrc ~/.ideavimrc
+ln -s $CONFIG_DIR/rider/.ideavimrc ~/.ideavimrc
