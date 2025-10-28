@@ -1,7 +1,7 @@
 "" Base Settings
 "" ========================================================
 
-set scrolloff=10
+set scrolloff=s10
 set showmode
 set showcmd
 
@@ -78,20 +78,20 @@ nnoremap <leader>9 :source ~/.ideavimrc<CR>
 let g:WhichKeyDesc_reload = "<leader>9 Reload ~/.ideavimrc"
 
 " Refactoring
-map <leader>rn <Action>(RenameElement)
-map <leader>rm <Action>(ExtractMethod)
+map <leader>rr <Action>(RenameElement)
+map <leader>re <Action>(ExtractMethod)
 map <leader>rv <Action>(IntroduceVariable)
 map <leader>rf <Action>(IntroduceField)
-map <leader>rs <Action>(ChangeSignature)
-map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map <leader>rc <Action>(ChangeSignature)
+map <leader>rl <Action>(Refactorings.QuickListPopupAction)
 
 let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
-let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"
-let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract method"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rr Rename element"
+let g:WhichKeyDesc_refactoring_method = "<leader>re Extract method"
 let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
 let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
-let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
-let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rc Change signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rl Open refactorings list"
 
 " Splits
 nmap <leader>sr <Action>(RiderUnitTestRunContextAction)

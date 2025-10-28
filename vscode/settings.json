@@ -1,49 +1,496 @@
 {
+  // appearance
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "workbench.colorTheme": "Default Light+",
   "workbench.iconTheme": "material-icon-theme",
-  "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": true,
-  "eslint.run": "onSave",
-  "explorer.confirmDelete": false,
-  "security.allowedUNCHosts": ["wsl.localhost"],
-  "workbench.colorTheme": "Darcula",
-  "debug.onTaskErrors": "showErrors",
-  "security.workspace.trust.untrustedFiles": "open",
-  "editor.fontLigatures": false,
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "Consolas, 'Courier New', monospace",
-  "editor.mouseWheelZoom": true,
-  "window.zoomLevel": 3,
-  "editor.linkedEditing": true,
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.lineNumbers": "relative",
-  "window.menuBarVisibility": "compact",
   "editor.minimap.enabled": false,
-
-  // vim settings
-  "vim.useCtrlKeys": true,
+  "workbench.tips.enabled": false,
+  "breadcrumbs.enabled": false,
+  // choose what you like! I like tabs
+  "workbench.editor.showTabs": "multiple",
+  "window.commandCenter": false,
+  // if you opt for tabs :)
+  "window.density.editorTabHeight": "compact",
+  "window.menuBarVisibility": "compact",
+  "window.restoreWindows": "none",
+  // vscodevim settings
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
-  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  // vscodevim appearance settings
+  "editor.cursorSurroundingLines": 10,
+  "vim.smartRelativeLine": true,
+  // highlighted yank
   "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.color": "#a9dc7660",
-  "vim.highlightedyank.duration": 250,
-  "vim.leader": "<Space>",
-  "vim.easymotion": true,
+  "vim.highlightedyank.color": "rgba(250, 189, 47, 0.5)",
+  "vim.highlightedyank.textColor": "#202020",
+  "vim.highlightedyank.duration": 150,
+  // statusbar colors
+  "vim.statusBarColorControl": false,
+  "vim.statusBarColors.normal": [
+    "#171819",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.insert": [
+    "#2C2E07",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.visual": [
+    "#35151D",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.visualline": [
+    "#35151D",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.visualblock": [
+    "#35151D",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.commandlineinprogress": [
+    "#2C2206",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.searchinprogressmode": [
+    "#171819",
+    "#ffffff"
+  ],
+  "vim.statusBarColors.surroundinputmode": [
+    "#171819",
+    "#ffffff"
+  ],
+  // which key settings
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "n", "e"],
-      "commands": ["workbench.view.explorer"]
-    },
-    {
-      "before": ["<leader>", "n", "c"],
-      "commands": ["workbench.action.chat.open"]
-    },
-    {
-      "before": ["<CR>"],
-      "commands": [":nohl"]
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "whichkey.show"
+      ]
     }
-  ]
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "whichkey.show"
+      ]
+    }
+  ],
+  "whichkey.useFullWidthCharacters": true,
+  "whichkey.bindingOverrides": [],
+  "whichkey.bindings": [
+    {
+      "key": "/",
+      "name": "[/] Fuzzy search in current editor",
+      "type": "command",
+      "command": "fuzzySearch.activeTextEditor",
+    },
+    {
+      "key": "f",
+      "name": "[F]format Document",
+      "type": "command",
+      "command": "editor.action.formatDocument",
+    },
+    {
+      "key": "h",
+      "name": "[H]arpoon",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "[A]dd editor to harpoon",
+          "type": "command",
+          "command": "vscode-harpoon.addEditor",
+        },
+        {
+          "key": "e",
+          "name": "[E]dit harpoon editors",
+          "type": "command",
+          "command": "vscode-harpoon.editEditors",
+        }
+      ],
+    },
+    {
+      "key": "s",
+      "name": "[S]earch",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "h",
+          "name": "[S]earch [H]arpoon Editors",
+          "type": "command",
+          "command": "vscode-harpoon.editorQuickPick",
+        },
+        {
+          "key": "p",
+          "name": "[S]earch Command [P]alette",
+          "type": "command",
+          "command": "workbench.action.showCommands",
+        },
+        {
+          "key": "f",
+          "name": "[S]earch [F]iles",
+          "type": "command",
+          "command": "workbench.action.quickOpen",
+        },
+        {
+          "key": "k",
+          "name": "[S]earch [K]eybindings",
+          "type": "command",
+          "command": "workbench.action.openGlobalKeybindings",
+        },
+        {
+          "key": "e",
+          "name": "[S]earch [E]xtensions",
+          "type": "command",
+          "command": "workbench.view.extensions",
+        },
+        {
+          "key": ".",
+          "name": "[S]earch Recent Files",
+          "type": "command",
+          "command": "workbench.action.openRecent",
+        },
+      ],
+    },
+    // LSP
+    {
+      "key": "r",
+      "name": "[R]efactoring",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "r",
+          "name": "[R]ename element",
+          "type": "command",
+          "command": "editor.action.rename"
+        },
+        {
+          "key": "e",
+          "name": "[E]xtract method",
+          "type": "command",
+          "command": "editor.action.refactor"
+        },
+        {
+          "key": "v",
+          "name": "Introduce [V]ariable",
+          "type": "command",
+          "command": "editor.action.refactor"
+        },
+        {
+          "key": "f",
+          "name": "Introduce [F]ield",
+          "type": "command",
+          "command": "editor.action.refactor"
+        },
+        {
+          "key": "c",
+          "name": "[C]hange signature",
+          "type": "command",
+          "command": "editor.action.refactor"
+        },
+        {
+          "key": "l",
+          "name": "Open refactorings [L]ist",
+          "type": "command",
+          "command": "editor.action.refactor"
+        }
+      ]
+    },
+    {
+      "key": "w",
+      "name": "[W]indows",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "d",
+          "name": "Split and move window [D]own",
+          "type": "command",
+          "command": "workbench.action.moveEditorToBelowGroup"
+        },
+        {
+          "key": "r",
+          "name": "Split and move window [R]ight",
+          "type": "command",
+          "command": "workbench.action.moveEditorToRightGroup"
+        },
+        {
+          "key": "u",
+          "name": "[U]nsplit all",
+          "type": "command",
+          "command": "workbench.action.joinAllGroups"
+        }
+      ]
+    },
+    {
+      "key": "t",
+      "name": "[T]abs",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "p",
+          "name": "[P]in",
+          "type": "command",
+          "command": "workbench.action.pinEditor"
+        },
+        {
+          "key": "c",
+          "name": "[C]lose all but pinned",
+          "type": "command",
+          "command": "workbench.action.closeUnpinnedEditors"
+        },
+        {
+          "key": "x",
+          "name": "Close all",
+          "type": "command",
+          "command": "workbench.action.closeAllEditors"
+        }
+      ]
+    },
+    {
+      "key": "n",
+      "name": "[N]avigation",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "c",
+          "name": "[C]ommit",
+          "type": "command",
+          "command": "workbench.view.scm"
+        },
+        {
+          "key": "t",
+          "name": "[T]ests",
+          "type": "command",
+          "command": "testing.showMostRecentOutput"
+        },
+        {
+          "key": "e",
+          "name": "[E]xplorer",
+          "type": "command",
+          "command": "workbench.view.explorer"
+        }
+      ]
+    },
+    {
+      "key": "j",
+      "name": "[J]ump to X",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "d",
+          "name": "[D]efinition",
+          "type": "command",
+          "command": "editor.action.revealDefinition"
+        },
+        {
+          "key": "y",
+          "name": "T[y]pe Definition",
+          "type": "command",
+          "command": "editor.action.goToTypeDefinition"
+        },
+        {
+          "key": "i",
+          "name": "[I]mplementation",
+          "type": "command",
+          "command": "editor.action.goToImplementation"
+        },
+        {
+          "key": "b",
+          "name": "[B]ase",
+          "type": "command",
+          "command": "editor.action.goToImplementation"
+        },
+        {
+          "key": "u",
+          "name": "[U]sages",
+          "type": "command",
+          "command": "references-view.findReferences"
+        },
+        {
+          "key": "q",
+          "name": "[Q]uick Implementation",
+          "type": "command",
+          "command": "editor.action.goToImplementation"
+        }
+      ]
+    },
+    {
+      "key": "g",
+      "name": "[G]it",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "[B]ranches",
+          "type": "command",
+          "command": "git.checkout"
+        },
+        {
+          "key": "a",
+          "name": "[A]nnotate",
+          "type": "command",
+          "command": "gitlens.toggleFileBlame"
+        }
+      ]
+    },
+    {
+      "key": "a",
+      "name": "Project [A]ctions",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "[B]uild",
+          "type": "command",
+          "command": "workbench.action.tasks.build"
+        },
+        {
+          "key": "r",
+          "name": "[R]un",
+          "type": "command",
+          "command": "workbench.action.debug.run"
+        },
+        {
+          "key": "d",
+          "name": "[D]ebug",
+          "type": "command",
+          "command": "workbench.action.debug.start"
+        },
+        {
+          "key": "s",
+          "name": "[S]top",
+          "type": "command",
+          "command": "workbench.action.debug.stop"
+        }
+      ]
+    },
+    {
+      "key": "m",
+      "name": "EF Core [M]igrations",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "[A]dd migration",
+          "type": "command",
+          "command": "workbench.action.tasks.runTask"
+        }
+      ]
+    },
+    {
+      "key": "q",
+      "name": "Testing",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "r",
+          "name": "[R]un test at cursor",
+          "type": "command",
+          "command": "testing.runAtCursor"
+        },
+        {
+          "key": "d",
+          "name": "[D]ebug test at cursor",
+          "type": "command",
+          "command": "testing.debugAtCursor"
+        },
+        {
+          "key": "a",
+          "name": "Run [A]ll tests in solution",
+          "type": "command",
+          "command": "testing.runAll"
+        }
+      ]
+    },
+    {
+      "key": "b",
+      "name": "[B]ookmarks",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "t",
+          "name": "[T]oggle bookmark",
+          "type": "command",
+          "command": "bookmarks.toggle"
+        },
+        {
+          "key": "s",
+          "name": "[S]how bookmarks",
+          "type": "command",
+          "command": "bookmarks.list"
+        },
+        {
+          "key": "n",
+          "name": "[N]ext bookmark",
+          "type": "command",
+          "command": "bookmarks.jumpToNext"
+        },
+        {
+          "key": "p",
+          "name": "[P]revious bookmark",
+          "type": "command",
+          "command": "bookmarks.jumpToPrevious"
+        },
+        {
+          "key": "a",
+          "name": "Toggle with mnemonic",
+          "type": "command",
+          "command": "bookmarks.toggle"
+        }
+      ]
+    },
+    {
+      "key": "d",
+      "name": "Go to [D]efinition",
+      "type": "command",
+      "command": "editor.action.revealDefinition"
+    },
+    {
+      "key": "e",
+      "name": "Go to impl[E]mentation",
+      "type": "command",
+      "command": "editor.action.goToImplementation"
+    },
+    {
+      "key": "k",
+      "name": "Hover info",
+      "type": "command",
+      "command": "editor.action.showHover"
+    },
+    {
+      "key": "c",
+      "name": "[C]omment line",
+      "type": "command",
+      "command": "editor.action.commentLine"
+    },
+    {
+      "key": "o",
+      "name": "[O]rganize imports",
+      "type": "command",
+      "command": "editor.action.organizeImports"
+    },
+    {
+      "key": "i",
+      "name": "Auto [I]ndent",
+      "type": "command",
+      "command": "editor.action.reindentlines"
+    },
+    {
+      "key": "p",
+      "name": "Format code ([P]retty)",
+      "type": "command",
+      "command": "editor.action.formatDocument"
+    }
+  ],
+  "terminal.integrated.fontFamily": "monospace",
+  "explorer.confirmDelete": false,
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": true,
+  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+  "window.autoDetectColorScheme": true,
 }
