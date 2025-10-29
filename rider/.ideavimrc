@@ -29,14 +29,16 @@ let g:WhichKey_ShowVimActions = "true"
 "" ========================================================
 
 set highlightedyank
+let g:highlightedyank_highlight_color = "rgba(10, 92, 33, 100)"
+
 set nerdtree
 
 "" Which-key settings
 set which-key
 set timeoutlen=5000
 let g:WhichKey_FontSize = 16
-let g:WhichKey_CommandColor = "#41ead4"
-let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_CommandColor = "#991414"
+let g:WhichKey_PrefixColor = "#0a5c21"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 "" Peekaboo
@@ -85,13 +87,13 @@ map <leader>rf <Action>(IntroduceField)
 map <leader>rc <Action>(ChangeSignature)
 map <leader>rl <Action>(Refactorings.QuickListPopupAction)
 
-let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
-let g:WhichKeyDesc_refactoring_rename = "<leader>rr Rename element"
-let g:WhichKeyDesc_refactoring_method = "<leader>re Extract method"
-let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
-let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
-let g:WhichKeyDesc_refactoring_signature = "<leader>rc Change signature"
-let g:WhichKeyDesc_refactoring_all = "<leader>rl Open refactorings list"
+let g:WhichKeyDesc_refactoring = "<leader>r [R]efactoring menu"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rr [R]ename element"
+let g:WhichKeyDesc_refactoring_method = "<leader>re [E]xtract method"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce [V]ariable"
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce [F]ield"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rc [C]hange signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rl Open refactorings [L]ist"
 
 " Splits
 nmap <leader>sr <Action>(RiderUnitTestRunContextAction)
@@ -99,32 +101,32 @@ nmap <leader>sd <Action>(MoveTabDown)
 nmap <leader>sr <Action>(MoveTabRight)
 nmap <leader>su <Action>(UnsplitAll)
 
-let g:WhichKeyDesc_splits = "<leader>s Splits"
-let g:WhichKeyDesc_splits_down = "<leader>sd Split and move tab down"
-let g:WhichKeyDesc_splits_right = "<leader>sr Split and move tab right"
-let g:WhichKeyDesc_splits_unsplit_all = "<leader>su Unsplit all"
+let g:WhichKeyDesc_splits = "<leader>s [S]plits"
+let g:WhichKeyDesc_splits_down = "<leader>sd Split and move tab [D]own"
+let g:WhichKeyDesc_splits_right = "<leader>sr Split and move tab [R]ight"
+let g:WhichKeyDesc_splits_unsplit_all = "<leader>su [U]nsplit all"
 
 " Go to declaration
 nmap <leader>d <Action>(GotoDeclaration)
-let g:WhichKeyDesc_gotodeclaration = "<leader>d Go to Definition"
+let g:WhichKeyDesc_gotodeclaration = "<leader>d Go to [D]efinition"
 
 " Go to implementation
 nmap <leader>e <Action>(GotoImplementation)
-let g:WhichKeyDesc_hoverinfo = "<leader>e Go to Implementation"
+let g:WhichKeyDesc_hoverinfo = "<leader>e Go to impl[E]mentation"
 
 " Hover info
 nmap <leader>k <Action>(ShowHoverInfo)
-let g:WhichKeyDesc_hoverinfo = "<leader>k Hover info"
+let g:WhichKeyDesc_hoverinfo = "<leader>k Hover info (sho[K] doc)"
 
 " Tabs
 nmap <leader>tp <Action>(PinActiveEditorTab)
 nmap <leader>tc <Action>(CloseAllUnpinnedEditors)
 nmap <leader>tx <Action>(CloseAllEditors)
 
-let g:WhichKeyDesc_tabs = "<leader>t Tabs"
-let g:WhichKeyDesc_tabs_pin = "<leader>tp Pin"
-let g:WhichKeyDesc_tabs_close_all_but_pinned = "<leader>tc Close all but pinned"
-let g:WhichKeyDesc_tabs_close_all = "<leader>tx Close all"
+let g:WhichKeyDesc_tabs = "<leader>t [T]abs"
+let g:WhichKeyDesc_tabs_pin = "<leader>tp [P]in"
+let g:WhichKeyDesc_tabs_close_all_but_pinned = "<leader>tc [C]lose all but pinned"
+let g:WhichKeyDesc_tabs_close_all = "<leader>tx Close all (e[X]it)"
 
 " Navigation
 nmap <leader>nc <Action>(ActivateCommitToolWindow)
@@ -133,12 +135,12 @@ nmap <leader>nn <Action>(ActivateNuGetToolWindow)
 nmap <leader>nt <Action>(ActivateUnitTestsToolWindow)
 nmap <leader>ne <Action>(ActivateProjectToolWindow)
 
-let g:WhichKeyDesc_navigation = "<leader>n Navigation"
-let g:WhichKeyDesc_navigation_commit = "<leader>nc Commit"
-let g:WhichKeyDesc_navigation_git = "<leader>ng Git"
-let g:WhichKeyDesc_navigation_nuget = "<leader>nn NuGet"
-let g:WhichKeyDesc_navigation_tests = "<leader>nt Tests"
-let g:WhichKeyDesc_navigation_explorer = "<leader>ne Explorer"
+let g:WhichKeyDesc_navigation = "<leader>n [N]avigation"
+let g:WhichKeyDesc_navigation_commit = "<leader>nc [C]ommit"
+let g:WhichKeyDesc_navigation_git = "<leader>ng [G]it"
+let g:WhichKeyDesc_navigation_nuget = "<leader>nn [N]uGet"
+let g:WhichKeyDesc_navigation_tests = "<leader>nt [T]ests"
+let g:WhichKeyDesc_navigation_explorer = "<leader>ne [E]xplorer"
 
 " Go to code
 nmap <leader>jd <Action>(GotoDeclaration)
@@ -148,21 +150,21 @@ nmap <leader>jb <Action>(GotoSuperMethod)
 nmap <leader>ju <Action>(ShowUsages)
 nmap <leader>jq <Action>(QuickImplementations)
 
-let g:WhichKeyDesc_jumpto = "<leader>j Jump to X"
-let g:WhichKeyDesc_jumpto_declaration = "<leader>jd Definition"
-let g:WhichKeyDesc_jumpto_type_declaration = "<leader>jy Type Definition"
-let g:WhichKeyDesc_jumpto_implementation = "<leader>ji Implementation"
-let g:WhichKeyDesc_jumpto_base = "<leader>jb Base"
-let g:WhichKeyDesc_jumpto_usages = "<leader>ju Usages"
-let g:WhichKeyDesc_jumpto_quickimplementation = "<leader>jq Quick Implementation"
+let g:WhichKeyDesc_jumpto = "<leader>j [J]ump to..."
+let g:WhichKeyDesc_jumpto_declaration = "<leader>jd [D]efinition"
+let g:WhichKeyDesc_jumpto_type_declaration = "<leader>jy T[Y]pe Definition"
+let g:WhichKeyDesc_jumpto_implementation = "<leader>ji [I]mplementation"
+let g:WhichKeyDesc_jumpto_base = "<leader>jb [B]ase"
+let g:WhichKeyDesc_jumpto_usages = "<leader>ju [U]sages"
+let g:WhichKeyDesc_jumpto_quickimplementation = "<leader>jq [Q]uick Implementation"
 
 " Git
 nmap <leader>gb <Action>(Git.Branches)
 nmap <leader>ga <Action>(Annotate)
 
-let g:WhichKeyDesc_git = "<leader>g Git"
-let g:WhichKeyDesc_git_branches = "<leader>gb Branches"
-let g:WhichKeyDesc_git_annotate = "<leader>ga Annotate"
+let g:WhichKeyDesc_git = "<leader>g [G]it"
+let g:WhichKeyDesc_git_branches = "<leader>gb [B]ranches"
+let g:WhichKeyDesc_git_annotate = "<leader>ga [A]nnotate"
 
 " Project
 nmap <leader>ab <Action>(BuildSolutionAction)
@@ -170,42 +172,44 @@ nmap <leader>ar <Action>(Run)
 nmap <leader>ad <Action>(Debug)
 nmap <leader>as <Action>(Stop)
 
-let g:WhichKeyDesc_project = "<leader>a Project"
-let g:WhichKeyDesc_project_build = "<leader>ab Build"
-let g:WhichKeyDesc_project_run = "<leader>ar Run"
-let g:WhichKeyDesc_project_debug = "<leader>ad Debug"
-let g:WhichKeyDesc_project_stop = "<leader>as Stop"
+let g:WhichKeyDesc_project = "<leader>a Project ([A]ction)"
+let g:WhichKeyDesc_project_build = "<leader>ab [B]uild"
+let g:WhichKeyDesc_project_run = "<leader>ar [R]un"
+let g:WhichKeyDesc_project_debug = "<leader>ad [D]ebug"
+let g:WhichKeyDesc_project_stop = "<leader>as [S]top"
 
 " Scratches
 nmap <leader>wb <Action>(NewScratchBuffer)
 nmap <leader>ws <Action>(Scratch.ShowFilesPopup)
 
-let g:WhichKeyDesc_scratches = "<leader>w Scratches"
-let g:WhichKeyDesc_scratches_show = "<leader>ws Show scratches"
-let g:WhichKeyDesc_scratches_add_buffer = "<leader>wb New scratch buffer"
-let g:WhichKeyDesc_scratches_add_file = "<leader>wf New scratch file"
-ss
+let g:WhichKeyDesc_scratches = "<leader>w Scratches ([W]ork files)"
+let g:WhichKeyDesc_scratches_show = "<leader>ws [S]how scratches"
+let g:WhichKeyDesc_scratches_add_buffer = "<leader>wb New scratch [B]uffer"
+let g:WhichKeyDesc_scratches_add_file = "<leader>wf New scratch [F]ile"
+
 " EF Core
 nmap <leader>ma <Action>(EfCore.Features.Migrations.AddMigrationAction)
 
-let g:WhichKeyDesc_migration = "<leader>m EF Core"
-let g:WhichKeyDesc_migration_add = "<leader>ma Add migration"
+let g:WhichKeyDesc_migration = "<leader>m EF Core ([M]igration)"
+let g:WhichKeyDesc_migration_add = "<leader>ma [A]dd migration"
 
 " Unit Testing
 nmap <leader>qr <Action>(RiderUnitTestRunContextAction)
 nmap <leader>qd <Action>(RiderUnitTestDebugContextAction)
 nmap <leader>qa <Action>(RiderUnitTestRunSolutionAction)
 
-let g:WhichKeyDesc_testing = "<leader>q Testing"
-let g:WhichKeyDesc_testing_run = "<leader>qr Run test at cursor"
-let g:WhichKeyDesc_testing_debug = "<leader>qd Debug test at cursor"
-let g:WhichKeyDesc_testing_debug = "<leader>qa Run all tests in solution"
+let g:WhichKeyDesc_testing = "<leader>q Testing ([Q]A)"
+let g:WhichKeyDesc_testing_run = "<leader>qr [R]un test at cursor"
+let g:WhichKeyDesc_testing_debug = "<leader>qd [D]ebug test at cursor"
+let g:WhichKeyDesc_testing_all = "<leader>qa Run [A]ll tests in solution"
 
 " Comment line
 map <leader>c <action>(CommentByLineComment)
+let g:WhichKeyDesc_comment = "<leader>c [C]omment line"
 
 " Close current tab
 map <leader>q <action>(CloseContent)
+let g:WhichKeyDesc_close = "<leader>q Close tab ([Q]uit)"
 
 " Rider-compatible bookmark functionality with <leader>B
 nmap <leader>bt <Action>(ToggleBookmark)
@@ -214,7 +218,12 @@ nmap <leader>bn <Action>(GotoNextBookmark)
 nmap <leader>bp <Action>(GotoPreviousBookmark)
 nmap <leader>ba <Action>(ToggleBookmarkWithMnemonic)
 
-let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks = "<leader>b [B]ookmarks"
+let g:WhichKeyDesc_bookmarks_toggle = "<leader>bt [T]oggle bookmark"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bs [S]how bookmarks"
+let g:WhichKeyDesc_bookmarks_next = "<leader>bn [N]ext bookmark"
+let g:WhichKeyDesc_bookmarks_previous = "<leader>bp [P]revious bookmark"
+let g:WhichKeyDesc_bookmarks_add_mnemonic = "<leader>ba [A]dd mnemonic bookmark"
 " Jump between methods
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
@@ -225,8 +234,13 @@ inoremap jk <Esc>
 
 "" Organize imports and format code
 nmap <leader>o <Action>(OptimizeImports)
+let g:WhichKeyDesc_optimize = "<leader>o [O]ptimize imports"
+
 nmap <leader>i <Action>(AutoIndentLines)
+let g:WhichKeyDesc_indent = "<leader>i Auto [I]ndent"
+
 nmap <leader>p <Action>(ReformatCode)
+let g:WhichKeyDesc_format = "<leader>p Format code ([P]retty)"
 
 nnoremap <Esc> :nohlsearch<CR>
 nmap <leader>` :marks<CR>
