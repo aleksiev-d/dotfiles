@@ -496,4 +496,5 @@
       "command": "editor.action.formatDocument"
     }
   ],
+  "biome.suggestInstallingGlobally": false,
 }

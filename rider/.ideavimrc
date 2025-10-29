@@ -1,7 +1,7 @@
 "" Base Settings
 "" ========================================================
 
-set scrolloff=s10
+set scrolloff=10
 set showmode
 set showcmd
 
@@ -37,8 +37,8 @@ set nerdtree
 set which-key
 set timeoutlen=5000
 let g:WhichKey_FontSize = 16
-let g:WhichKey_CommandColor = "#991414"
-let g:WhichKey_PrefixColor = "#0a5c21"
+let g:WhichKey_CommandColor = "#A31515"
+let g:WhichKey_PrefixColor = "#007F00"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 "" Peekaboo
@@ -200,16 +200,14 @@ nmap <leader>qa <Action>(RiderUnitTestRunSolutionAction)
 
 let g:WhichKeyDesc_testing = "<leader>q Testing ([Q]A)"
 let g:WhichKeyDesc_testing_run = "<leader>qr [R]un test at cursor"
+
+
 let g:WhichKeyDesc_testing_debug = "<leader>qd [D]ebug test at cursor"
 let g:WhichKeyDesc_testing_all = "<leader>qa Run [A]ll tests in solution"
 
 " Comment line
 map <leader>c <action>(CommentByLineComment)
 let g:WhichKeyDesc_comment = "<leader>c [C]omment line"
-
-" Close current tab
-map <leader>q <action>(CloseContent)
-let g:WhichKeyDesc_close = "<leader>q Close tab ([Q]uit)"
 
 " Rider-compatible bookmark functionality with <leader>B
 nmap <leader>bt <Action>(ToggleBookmark)
@@ -224,13 +222,28 @@ let g:WhichKeyDesc_bookmarks_show = "<leader>bs [S]how bookmarks"
 let g:WhichKeyDesc_bookmarks_next = "<leader>bn [N]ext bookmark"
 let g:WhichKeyDesc_bookmarks_previous = "<leader>bp [P]revious bookmark"
 let g:WhichKeyDesc_bookmarks_add_mnemonic = "<leader>ba [A]dd mnemonic bookmark"
+
+" Find/Search
+nmap <leader>fe <Action>(SearchEverywhere)
+nmap <leader>fc <Action>(GotoClass)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fs <Action>(GotoSymbol)
+nmap <leader>fa <Action>(GotoAction)
+nmap <leader>ft <Action>(TextSearchAction)
+nmap <leader>fp <Action>(FindInPath)
+
+let g:WhichKeyDesc_find = "<leader>f [F]ind/Search"
+let g:WhichKeyDesc_find_everywhere = "<leader>fe Find [E]verywhere"
+let g:WhichKeyDesc_find_class = "<leader>fc Find [C]lass"
+let g:WhichKeyDesc_find_file = "<leader>ff Find [F]ile"
+let g:WhichKeyDesc_find_symbol = "<leader>fs Find [S]ymbol"
+let g:WhichKeyDesc_find_action = "<leader>fa Find [A]ction"
+let g:WhichKeyDesc_find_text = "<leader>ft Find [T]ext"
+let g:WhichKeyDesc_find_in_path = "<leader>fp Find in [P]ath"
+
 " Jump between methods
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
-
-"" Custom mappings
-"" ========================================================
-inoremap jk <Esc>
 
 "" Organize imports and format code
 nmap <leader>o <Action>(OptimizeImports)
@@ -242,7 +255,15 @@ let g:WhichKeyDesc_indent = "<leader>i Auto [I]ndent"
 nmap <leader>p <Action>(ReformatCode)
 let g:WhichKeyDesc_format = "<leader>p Format code ([P]retty)"
 
+"" Custom mappings
+"" ========================================================
+" jk mapped to esc in Insert mode
+inoremap jk <Esc>
+
+" Esc to remove highlight
 nnoremap <Esc> :nohlsearch<CR>
+
+" Show marks
 nmap <leader>` :marks<CR>
 
 " Move lines up/down
@@ -250,7 +271,6 @@ nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 vnoremap <A-j> :m '>+1<CR>gv
 vnoremap <A-k> :m '<-2<CR>gv
-
 
 " Better indenting in visual mode
 vnoremap < <gv
