@@ -201,7 +201,7 @@ let g:WhichKeyDesc_testing_run = "<leader>qr Run test at cursor"
 let g:WhichKeyDesc_testing_debug = "<leader>qd Debug test at cursor"
 let g:WhichKeyDesc_testing_debug = "<leader>qa Run all tests in solution"
 
-" Comment lines
+" Comment line
 map <leader>c <action>(CommentByLineComment)
 
 " Close current tab
@@ -230,3 +230,14 @@ nmap <leader>p <Action>(ReformatCode)
 
 nnoremap <Esc> :nohlsearch<CR>
 nmap <leader>` :marks<CR>
+
+" Move lines up/down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv
+vnoremap <A-k> :m '<-2<CR>gv
+
+
+" Better indenting in visual mode
+vnoremap < <gv
+vnoremap > >gv
