@@ -6,7 +6,7 @@ plugins=(
     git
     dotnet
     zsh-autosuggestions
-    zsh-syntax-highlighting
+   # zsh-syntax-highlighting
    # zsh-vi-mode
 )
 
@@ -31,3 +31,9 @@ export FZF_DEFAULT_OPTS=" \
 --reverse"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+alias python=python3
+alias pip=pip3
