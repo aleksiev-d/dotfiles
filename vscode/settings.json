@@ -8,13 +8,19 @@
   "breadcrumbs.enabled": false,
   "files.autoSave": "onFocusChange",
   // choose what you like! I like tabs
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "multiple",
   "window.commandCenter": false,
   // if you opt for tabs :)
   "window.restoreWindows": "preserve",
   "files.hotExit": "onExit",
   "workbench.editor.restoreViewState": true,
   // vscodevim settings
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   "vim.useCtrlKeys": true,
@@ -507,4 +513,6 @@
     "statusBar.debuggingForeground": "#ffffff"
   },
   "claudeCode.preferredLocation": "panel",
+  "explorer.confirmDragAndDrop": false,
+  "editor.formatOnSave": true,
 }

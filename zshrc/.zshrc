@@ -35,5 +35,6 @@ export FZF_DEFAULT_OPTS=" \
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/nvim/bin:$PATH"
 alias python=python3
 alias pip=pip3

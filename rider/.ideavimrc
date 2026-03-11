@@ -278,3 +278,14 @@ vnoremap <A-k> :m '<-2<CR>gv
 " Better indenting in visual mode
 vnoremap < <gv
 vnoremap > >gv
+
+" Toggle sticky lines
+nmap <leader>l <Action>(EditorGutterToggleGlobalStickyLines)
+let g:WhichKeyDesc_sticky_lines = "<leader>l Toggle sticky [L]ines"
+
+" Greatest keymap ever
+vnoremap <leader>p "_dP
+
+" Delete single characters into void register
+nnoremap x "_x
+nnoremap X "_X
