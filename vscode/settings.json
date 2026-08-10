@@ -1,13 +1,12 @@
 {
   // appearance
   "editor.fontFamily": "JetBrainsMono Nerd Font",
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Light+",
   "workbench.iconTheme": "material-icon-theme",
   "editor.minimap.enabled": false,
   "workbench.tips.enabled": false,
   "breadcrumbs.enabled": false,
   "files.autoSave": "onFocusChange",
-  // choose what you like! I like tabs
   "workbench.editor.showTabs": "multiple",
   "window.commandCenter": false,
   // if you opt for tabs :)
@@ -17,8 +16,13 @@
   // vscodevim settings
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.useSystemClipboard": true,
@@ -32,11 +36,13 @@
   "vim.highlightedyank.color": "rgba(250, 189, 47, 0.5)",
   "vim.highlightedyank.textColor": "#202020",
   "vim.highlightedyank.duration": 150,
+  // C# has no source.organizeImports code action; Roslyn only sorts usings during format
+  "dotnet.formatting.organizeImportsOnFormat": true,
   // other settings
   "terminal.integrated.fontFamily": "monospace",
   "explorer.confirmDelete": false,
   "git.blame.statusBarItem.enabled": false,
-  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+  "workbench.preferredDarkColorTheme": "Monokai Dimmed",
   "window.autoDetectColorScheme": true,
   // statusbar colors
   "vim.statusBarColorControl": false,
@@ -72,6 +78,51 @@
     "#171819",
     "#ffffff"
   ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "y"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "<A-j>"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
+    },
+    {
+      "before": [
+        "<A-k>"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
+    }
+  ],
   // which key settings
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -80,6 +131,34 @@
       ],
       "commands": [
         "whichkey.show"
+      ]
+    },
+    {
+      "before": [
+        "<Esc>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "X"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "X"
       ]
     }
   ],
@@ -90,6 +169,42 @@
       ],
       "commands": [
         "whichkey.show"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "after": [
+        "<",
+        "g",
+        "v"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "after": [
+        ">",
+        "g",
+        "v"
+      ]
+    },
+    {
+      "before": [
+        "<A-j>"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
+    },
+    {
+      "before": [
+        "<A-k>"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
       ]
     }
   ],
@@ -104,9 +219,58 @@
     },
     {
       "key": "f",
-      "name": "[F]format Document",
-      "type": "command",
-      "command": "editor.action.formatDocument",
+      "name": "[F]ind/Search",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "e",
+          "name": "Find [E]verywhere",
+          "type": "command",
+          "command": "workbench.action.quickOpen",
+        },
+        {
+          "key": "c",
+          "name": "Find [C]lass",
+          "type": "command",
+          "command": "workbench.action.showAllSymbols",
+        },
+        {
+          "key": "f",
+          "name": "Find [F]ile",
+          "type": "command",
+          "command": "workbench.action.quickOpen",
+        },
+        {
+          "key": "s",
+          "name": "Find [S]ymbol",
+          "type": "command",
+          "command": "workbench.action.gotoSymbol",
+        },
+        {
+          "key": "a",
+          "name": "Find [A]ction",
+          "type": "command",
+          "command": "workbench.action.showCommands",
+        },
+        {
+          "key": "t",
+          "name": "Find [T]ext",
+          "type": "command",
+          "command": "workbench.action.findInFiles",
+        },
+        {
+          "key": "p",
+          "name": "Find in [P]ath",
+          "type": "command",
+          "command": "workbench.action.findInFiles",
+        },
+        {
+          "key": ".",
+          "name": "Recent Files",
+          "type": "command",
+          "command": "workbench.action.openRecent",
+        },
+      ],
     },
     {
       "key": "h",
@@ -124,51 +288,39 @@
           "name": "[E]dit harpoon editors",
           "type": "command",
           "command": "vscode-harpoon.editEditors",
+        },
+        {
+          "key": "s",
+          "name": "[S]earch harpoon editors",
+          "type": "command",
+          "command": "vscode-harpoon.editorQuickPick",
         }
       ],
     },
     {
       "key": "s",
-      "name": "[S]earch",
+      "name": "[S]plits",
       "type": "bindings",
       "bindings": [
         {
-          "key": "h",
-          "name": "[S]earch [H]arpoon Editors",
+          "key": "d",
+          "name": "Split and move tab [D]own",
           "type": "command",
-          "command": "vscode-harpoon.editorQuickPick",
+          "command": "workbench.action.moveEditorToBelowGroup"
         },
         {
-          "key": "p",
-          "name": "[S]earch Command [P]alette",
+          "key": "r",
+          "name": "Split and move tab [R]ight",
           "type": "command",
-          "command": "workbench.action.showCommands",
+          "command": "workbench.action.moveEditorToRightGroup"
         },
         {
-          "key": "f",
-          "name": "[S]earch [F]iles",
+          "key": "u",
+          "name": "[U]nsplit all",
           "type": "command",
-          "command": "workbench.action.quickOpen",
-        },
-        {
-          "key": "k",
-          "name": "[S]earch [K]eybindings",
-          "type": "command",
-          "command": "workbench.action.openGlobalKeybindings",
-        },
-        {
-          "key": "e",
-          "name": "[S]earch [E]xtensions",
-          "type": "command",
-          "command": "workbench.view.extensions",
-        },
-        {
-          "key": ".",
-          "name": "[S]earch Recent Files",
-          "type": "command",
-          "command": "workbench.action.openRecent",
-        },
-      ],
+          "command": "workbench.action.joinAllGroups"
+        }
+      ]
     },
     // LSP
     {
@@ -211,31 +363,25 @@
           "name": "Open refactorings [L]ist",
           "type": "command",
           "command": "editor.action.refactor"
+        },
+        {
+          "key": "s",
+          "name": "[S]urround with",
+          "type": "command",
+          "command": "editor.action.surroundWithSnippet"
         }
       ]
     },
     {
       "key": "w",
-      "name": "[W]indows",
+      "name": "Scratches ([W]ork files)",
       "type": "bindings",
       "bindings": [
         {
-          "key": "d",
-          "name": "Split and move window [D]own",
+          "key": "b",
+          "name": "New scratch [B]uffer",
           "type": "command",
-          "command": "workbench.action.moveEditorToBelowGroup"
-        },
-        {
-          "key": "r",
-          "name": "Split and move window [R]ight",
-          "type": "command",
-          "command": "workbench.action.moveEditorToRightGroup"
-        },
-        {
-          "key": "u",
-          "name": "[U]nsplit all",
-          "type": "command",
-          "command": "workbench.action.joinAllGroups"
+          "command": "workbench.action.files.newUntitledFile"
         }
       ]
     },
@@ -276,6 +422,12 @@
           "command": "workbench.view.scm"
         },
         {
+          "key": "g",
+          "name": "[G]it",
+          "type": "command",
+          "command": "workbench.view.scm"
+        },
+        {
           "key": "t",
           "name": "[T]ests",
           "type": "command",
@@ -301,8 +453,8 @@
           "command": "editor.action.revealDefinition"
         },
         {
-          "key": "y",
-          "name": "T[y]pe Definition",
+          "key": "t",
+          "name": "[T]ype Definition",
           "type": "command",
           "command": "editor.action.goToTypeDefinition"
         },
@@ -484,8 +636,28 @@
     {
       "key": "o",
       "name": "[O]rganize imports",
-      "type": "command",
-      "command": "editor.action.organizeImports"
+      "type": "conditional",
+      "bindings": [
+        {
+          // C# has no source.organizeImports provider; usings sort on format
+          // via dotnet.formatting.organizeImportsOnFormat
+          "key": "languageId:csharp",
+          "name": "Sort usings (via format)",
+          "type": "command",
+          "command": "editor.action.formatDocument"
+        },
+        {
+          // fallback for all other languages
+          "key": "default",
+          "name": "Organize imports",
+          "type": "command",
+          "command": "editor.action.codeAction",
+          "args": {
+            "kind": "source.organizeImports",
+            "apply": "first"
+          }
+        }
+      ]
     },
     {
       "key": "i",
@@ -498,12 +670,23 @@
       "name": "Format code ([P]retty)",
       "type": "command",
       "command": "editor.action.formatDocument"
+    },
+    {
+      "key": "8",
+      "name": "Toggle Distraction Free Mode",
+      "type": "command",
+      "command": "workbench.action.toggleZenMode"
+    },
+    {
+      "key": "l",
+      "name": "Toggle sticky [L]ines",
+      "type": "command",
+      "command": "editor.action.toggleStickyScroll"
     }
   ],
   "editor.guides.indentation": false,
-  "dotnet.automaticallySyncWithActiveItem": true,
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "git.blame.editorDecoration.enabled": false,
   "workbench.colorCustomizations": {
     "statusBar.background": "#171819",
@@ -515,4 +698,6 @@
   "claudeCode.preferredLocation": "panel",
   "explorer.confirmDragAndDrop": false,
   "editor.formatOnSave": true,
+  "chat.disableAIFeatures": true,
+  "workbench.preferredLightColorTheme": "Light+",
 }
