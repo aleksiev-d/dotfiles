@@ -41,7 +41,7 @@
   // other settings
   "terminal.integrated.fontFamily": "monospace",
   "explorer.confirmDelete": false,
-  "git.blame.statusBarItem.enabled": false,
+  "git.blame.statusBarItem.enabled": true,
   "workbench.preferredDarkColorTheme": "Monokai Dimmed",
   "window.autoDetectColorScheme": true,
   // statusbar colors
@@ -699,5 +699,8 @@
   "explorer.confirmDragAndDrop": false,
   "editor.formatOnSave": true,
   "chat.disableAIFeatures": true,
-  "workbench.preferredLightColorTheme": "Light+",
+  "workbench.preferredLightColorTheme": "Everforest Pro Dark",
+  "terminal.integrated.fontSize": 14,
+  "editor.stickyScroll.enabled": false,
+  "haskell.manageHLS": "GHCup",
 }

@@ -38,3 +38,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/nvim/bin:$PATH"
 alias python=python3
 alias pip=pip3
+
+[ -f "/Users/danailaleksiev/.ghcup/env" ] && . "/Users/danailaleksiev/.ghcup/env" # ghcup-env
