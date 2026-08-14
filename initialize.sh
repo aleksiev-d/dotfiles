@@ -21,6 +21,11 @@ echo "Setting up IdeaVim configuration..."
 rm ~/.ideavimrc
 ln -s "$CONFIG_DIR/rider/.ideavimrc" ~/.ideavimrc
 
+echo "Setting up Neovim configuration..."
+# -rf because the target is a directory (or an old symlink) on a fresh machine
+rm -rf ~/.config/nvim
+ln -s "$CONFIG_DIR/nvim" ~/.config/nvim
+
 echo "Installing VS Code extensions..."
 while IFS= read -r extension || [ -n "$extension" ]; do
   if [ -n "$extension" ]; then
