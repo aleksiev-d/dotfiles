@@ -26,6 +26,14 @@ echo "Setting up Neovim configuration..."
 rm -rf ~/.config/nvim
 ln -s "$CONFIG_DIR/nvim" ~/.config/nvim
 
+echo "Setting up kitty configuration..."
+rm -rf ~/.config/kitty
+ln -s "$CONFIG_DIR/kitty" ~/.config/kitty
+
+echo "Setting up AeroSpace configuration..."
+rm -f ~/.aerospace.toml
+ln -s "$CONFIG_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
+
 echo "Installing VS Code extensions..."
 while IFS= read -r extension || [ -n "$extension" ]; do
   if [ -n "$extension" ]; then
