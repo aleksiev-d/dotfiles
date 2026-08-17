@@ -765,5 +765,9 @@
   "diffEditor.renderSideBySide": false,
   "diffEditor.experimental.showMoves": true,
   "terminal.integrated.gpuAcceleration": "off",
-  "window.systemColorTheme": "dark"
+  "window.systemColorTheme": "dark",
+  // status bar clock: right-aligned, lowest priority = rightmost item
+  "clock.alignment": "Right",
+  "clock.priority": -100,
+  "clock.format": "HH:MM"
 }
