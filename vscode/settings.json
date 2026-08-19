@@ -762,7 +762,7 @@
   "terminal.integrated.fontSize": 14,
   "editor.stickyScroll.enabled": false,
   "haskell.manageHLS": "GHCup",
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
   "diffEditor.experimental.showMoves": true,
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
