@@ -34,6 +34,12 @@ echo "Setting up AeroSpace configuration..."
 rm -f ~/.aerospace.toml
 ln -s "$CONFIG_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
 
+echo "Setting up lazygit configuration..."
+# Only config.yml is linked; lazygit writes state.yml alongside it, which is machine-local.
+mkdir -p "$HOME/Library/Application Support/lazygit"
+rm -f "$HOME/Library/Application Support/lazygit/config.yml"
+ln -s "$CONFIG_DIR/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
+
 echo "Installing VS Code extensions..."
 while IFS= read -r extension || [ -n "$extension" ]; do
   if [ -n "$extension" ]; then

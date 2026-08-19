@@ -14,6 +14,7 @@ configurations/
 ├── rider/          # .ideavimrc (IdeaVim, used by Rider)
 ├── vscode/         # settings.json, keybindings.json, extensions.txt
 ├── nvim/           # full Neovim config (LazyVim): init.lua, lua/config, lua/plugins, lazy-lock.json
+├── lazygit/        # config.yml (delta as the diff pager)
 └── iterm2/         # iTerm2 color presets (.itermcolors)
 ```
 
@@ -29,6 +30,7 @@ and replaces it with a symlink into this repo:
 | `~/Library/Application Support/Code/User/settings.json`        | `vscode/settings.json`    |
 | `~/Library/Application Support/Code/User/keybindings.json`     | `vscode/keybindings.json` |
 | `~/.config/nvim` (whole directory)                             | `nvim/`                   |
+| `~/Library/Application Support/lazygit/config.yml`             | `lazygit/config.yml`      |
 
 It then installs every VS Code extension listed in `vscode/extensions.txt`
 via `code --install-extension`.
@@ -50,6 +52,8 @@ Manual steps not covered by the script:
   the preset, then apply it in Settings → Profiles → Colors → Color Presets.
   (iTerm2 copies preset values into its own preferences, so symlinking is not
   applicable here.)
+- **lazygit pager**: the config sets `delta` as the diff pager, so install it
+  (`brew install git-delta`) or lazygit falls back to plain diffs.
 - **Neovim plugins**: nothing to do — the first `nvim` launch bootstraps
   lazy.nvim and installs the exact plugin versions pinned in
   `nvim/lazy-lock.json`.
