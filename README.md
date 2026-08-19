@@ -41,7 +41,7 @@ also works as a repair tool if a link gets clobbered.
 ## Setting up a new machine
 
 ```sh
-git clone git@github.com:aleksiev-d/configurations.git ~/Documents/configurations
+git clone git@github.com:aleksiev-d/dotfiles.git ~/Documents/configurations
 cd ~/Documents/configurations
 ./initialize.sh
 ```
