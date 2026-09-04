@@ -111,12 +111,8 @@ setup_tool() {
   confirm "Set up $name configuration?" || { echo "Skipping $name."; return; }
 
   if ! "$check_fn"; then
-    if confirm "$name is not installed. Install it now via Homebrew?"; then
-      if ensure_brew; then
-        "$install_fn"
-      else
-        echo "Homebrew is required to install $name automatically — install $name manually, then re-run this script."
-      fi
+    if confirm "$name is not installed. Install it now?"; then
+      "$install_fn"
     fi
     if ! "$check_fn"; then
       echo "Skipping $name configuration (still not installed)."
@@ -128,7 +124,7 @@ setup_tool() {
 }
 
 check_vscode()   { have code; }
-install_vscode() { brew install --cask visual-studio-code; }
+install_vscode() { ensure_brew && brew install --cask visual-studio-code; }
 link_vscode() {
   echo "Setting up VS Code keybindings..."
   link_file "$VSCODE_USER_DIR/keybindings.json" "$CONFIG_DIR/vscode/keybindings.json"
@@ -147,7 +143,7 @@ link_vscode() {
 }
 
 check_zsh()   { have zsh; }
-install_zsh() { brew install zsh; }
+install_zsh() { ensure_brew && brew install zsh; }
 link_zsh() {
   if ! ensure_oh_my_zsh; then
     echo "Skipping zsh configuration (oh-my-zsh still not installed)."
@@ -164,14 +160,14 @@ link_zsh() {
 }
 
 check_rider()   { have rider || [ -d "/Applications/Rider.app" ]; }
-install_rider() { brew install --cask rider; }
+install_rider() { ensure_brew && brew install --cask rider; }
 link_rider() {
   echo "Setting up IdeaVim configuration..."
   link_file "$HOME/.ideavimrc" "$CONFIG_DIR/rider/.ideavimrc"
 }
 
 check_nvim()   { have nvim; }
-install_nvim() { brew install neovim; }
+install_nvim() { ensure_brew && brew install neovim; }
 link_nvim() {
   echo "Setting up Neovim configuration..."
   # -rf because the target is a directory (or an old symlink) on a fresh machine
@@ -179,26 +175,34 @@ link_nvim() {
 }
 
 check_kitty()   { have kitty || [ -d "/Applications/kitty.app" ]; }
-install_kitty() { brew install --cask kitty; }
+install_kitty() { ensure_brew && brew install --cask kitty; }
 link_kitty() {
   echo "Setting up kitty configuration..."
   link_dir "$HOME/.config/kitty" "$CONFIG_DIR/kitty"
 }
 
 check_aerospace()   { have aerospace || [ -d "/Applications/AeroSpace.app" ]; }
-install_aerospace() { brew install --cask nikitabobko/tap/aerospace; }
+install_aerospace() { ensure_brew && brew install --cask nikitabobko/tap/aerospace; }
 link_aerospace() {
   echo "Setting up AeroSpace configuration..."
   link_file "$HOME/.aerospace.toml" "$CONFIG_DIR/aerospace/.aerospace.toml"
 }
 
 check_lazygit()   { have lazygit; }
-install_lazygit() { brew install lazygit; }
+install_lazygit() { ensure_brew && brew install lazygit; }
 link_lazygit() {
   echo "Setting up lazygit configuration..."
   # Only config.yml is linked; lazygit writes state.yml alongside it, which is machine-local.
   mkdir -p "$HOME/Library/Application Support/lazygit"
   link_file "$HOME/Library/Application Support/lazygit/config.yml" "$CONFIG_DIR/lazygit/config.yml"
+}
+
+check_herdr()   { have herdr; }
+install_herdr() { curl -fsSL https://herdr.dev/install.sh | sh; }
+link_herdr() {
+  echo "Setting up Herdr configuration..."
+  mkdir -p "$HOME/.config/herdr"
+  link_file "$HOME/.config/herdr/config.toml" "$CONFIG_DIR/herdr/config.toml"
 }
 
 setup_tool "VS Code"          check_vscode     install_vscode     link_vscode
@@ -208,6 +212,7 @@ setup_tool "Neovim"           check_nvim       install_nvim       link_nvim
 setup_tool "kitty"            check_kitty      install_kitty      link_kitty
 setup_tool "AeroSpace"        check_aerospace  install_aerospace  link_aerospace
 setup_tool "lazygit"          check_lazygit    install_lazygit    link_lazygit
+setup_tool "Herdr"            check_herdr      install_herdr      link_herdr
 
 if [ -n "$BREW_FRESHLY_INSTALLED" ]; then
   echo

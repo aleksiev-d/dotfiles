@@ -15,6 +15,7 @@ configurations/
 ├── vscode/         # settings.json, keybindings.json, extensions.txt
 ├── nvim/           # full Neovim config (LazyVim): init.lua, lua/config, lua/plugins, lazy-lock.json
 ├── lazygit/        # config.yml (delta as the diff pager)
+├── herdr/          # config.toml (terminal agent multiplexer)
 └── iterm2/         # iTerm2 color presets (.itermcolors)
 ```
 
@@ -28,9 +29,9 @@ For each managed tool, the script asks whether to set it up:
 - **Not set up** → skipped entirely, nothing touched.
 - **Set up, and the tool is already installed** → whatever occupies the
   canonical location is removed and replaced with a symlink into this repo.
-- **Set up, but the tool isn't installed** → offers to install it via
-  Homebrew; if you decline (or Homebrew isn't available), the config is left
-  alone.
+- **Set up, but the tool isn't installed** → offers to install it (most tools
+  via Homebrew; if you decline — or Homebrew isn't available for the tools
+  that need it — the config is left alone).
 
 | Tool      | Link (where the tool looks)                                | Real file (in this repo)  |
 | --------- | ------------------------------------------------------------| ------------------------- |
@@ -42,6 +43,10 @@ For each managed tool, the script asks whether to set it up:
 | kitty     | `~/.config/kitty` (whole directory)                           | `kitty/`                  |
 | AeroSpace | `~/.aerospace.toml`                                           | `aerospace/.aerospace.toml` |
 | lazygit   | `~/Library/Application Support/lazygit/config.yml`            | `lazygit/config.yml`      |
+| Herdr     | `~/.config/herdr/config.toml`                                 | `herdr/config.toml`       |
+
+Herdr is installed via its own curl installer (`curl -fsSL
+https://herdr.dev/install.sh \| sh`) instead of Homebrew.
 
 If VS Code is set up, it also installs every extension listed in
 `vscode/extensions.txt` via `code --install-extension`.
