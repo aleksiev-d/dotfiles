@@ -62,6 +62,36 @@ ensure_zsh_autosuggestions() {
   [ -d "$custom_dir/plugins/zsh-autosuggestions" ]
 }
 
+# Prints the shell registered as this account's login shell (works on both
+# macOS's dscl and Linux's getent, falling back to $SHELL).
+current_login_shell() {
+  if have dscl; then
+    dscl . -read "/Users/$(id -un)" UserShell 2>/dev/null | awk '{print $2}'
+  elif have getent; then
+    getent passwd "$(id -un)" 2>/dev/null | cut -d: -f7
+  else
+    echo "$SHELL"
+  fi
+}
+
+# Offers to make zsh the account's login shell, since installing zsh and
+# linking .zshrc doesn't change what a fresh login (e.g. a new SSH session)
+# actually starts in.
+ensure_default_shell() {
+  local zsh_bin
+  zsh_bin="$(command -v zsh)"
+  [ -z "$zsh_bin" ] && return 1
+  [ "$(current_login_shell)" = "$zsh_bin" ] && return 0
+
+  confirm "Set zsh ($zsh_bin) as your default login shell?" || return 1
+
+  if ! grep -qxF "$zsh_bin" /etc/shells 2>/dev/null; then
+    echo "$zsh_bin" | sudo tee -a /etc/shells >/dev/null
+  fi
+
+  chsh -s "$zsh_bin"
+}
+
 # Runs the check -> (offer install) -> link flow for a single tool.
 setup_tool() {
   local name="$1" check_fn="$2" install_fn="$3" link_fn="$4"
@@ -114,6 +144,10 @@ link_zsh() {
   ensure_zsh_autosuggestions || echo "Continuing without zsh-autosuggestions; oh-my-zsh will warn about the missing plugin until it's installed."
   echo "Setting up zsh configuration..."
   link_file "$HOME/.zshrc" "$CONFIG_DIR/zshrc/.zshrc"
+
+  if ensure_default_shell; then
+    echo "Default shell set to zsh — log out and back in (or start a new SSH session) for it to take effect."
+  fi
 }
 
 check_rider()   { have rider || [ -d "/Applications/Rider.app" ]; }
