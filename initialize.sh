@@ -48,6 +48,20 @@ ensure_oh_my_zsh() {
   [ -d "$HOME/.oh-my-zsh" ]
 }
 
+# The tracked .zshrc enables the zsh-autosuggestions oh-my-zsh plugin, which
+# isn't bundled with oh-my-zsh itself. Install it as a custom plugin if
+# missing. Returns failure if it's still missing afterward.
+ensure_zsh_autosuggestions() {
+  local custom_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+  [ -d "$custom_dir/plugins/zsh-autosuggestions" ] && return 0
+
+  confirm "zsh-autosuggestions plugin is not installed. Install it now?" || return 1
+
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$custom_dir/plugins/zsh-autosuggestions"
+
+  [ -d "$custom_dir/plugins/zsh-autosuggestions" ]
+}
+
 # Runs the check -> (offer install) -> link flow for a single tool.
 setup_tool() {
   local name="$1" check_fn="$2" install_fn="$3" link_fn="$4"
@@ -97,6 +111,7 @@ link_zsh() {
     echo "Skipping zsh configuration (oh-my-zsh still not installed)."
     return
   fi
+  ensure_zsh_autosuggestions || echo "Continuing without zsh-autosuggestions; oh-my-zsh will warn about the missing plugin until it's installed."
   echo "Setting up zsh configuration..."
   link_file "$HOME/.zshrc" "$CONFIG_DIR/zshrc/.zshrc"
 }
