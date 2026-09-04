@@ -35,6 +35,19 @@ ensure_brew() {
   have brew
 }
 
+# The tracked .zshrc assumes oh-my-zsh lives at ~/.oh-my-zsh; install it if
+# it's missing. Returns failure if it's still missing afterward.
+ensure_oh_my_zsh() {
+  [ -d "$HOME/.oh-my-zsh" ] && return 0
+
+  confirm "oh-my-zsh is not installed (required by the tracked .zshrc). Install it now?" || return 1
+
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  [ -d "$HOME/.oh-my-zsh" ]
+}
+
 # Runs the check -> (offer install) -> link flow for a single tool.
 setup_tool() {
   local name="$1" check_fn="$2" install_fn="$3" link_fn="$4"
@@ -80,6 +93,10 @@ link_vscode() {
 check_zsh()   { have zsh; }
 install_zsh() { brew install zsh; }
 link_zsh() {
+  if ! ensure_oh_my_zsh; then
+    echo "Skipping zsh configuration (oh-my-zsh still not installed)."
+    return
+  fi
   echo "Setting up zsh configuration..."
   link_file "$HOME/.zshrc" "$CONFIG_DIR/zshrc/.zshrc"
 }
