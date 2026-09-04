@@ -74,22 +74,34 @@ current_login_shell() {
   fi
 }
 
-# Offers to make zsh the account's login shell, since installing zsh and
-# linking .zshrc doesn't change what a fresh login (e.g. a new SSH session)
+# Makes interactive login shells exec into zsh via ~/.profile. Used instead
+# of `chsh`, which authenticates via the account password -- on key-only
+# accounts with no password set, it just hangs waiting for one that can
+# never be entered.
+exec_zsh_from_profile() {
+  local profile="$HOME/.profile"
+  grep -q '# initialize.sh: exec zsh' "$profile" 2>/dev/null && return 0
+  {
+    echo ''
+    echo '# initialize.sh: exec zsh'
+    echo 'if [ -t 1 ] && [ -z "$ZSH_VERSION" ] && command -v zsh >/dev/null 2>&1; then'
+    echo '  exec zsh -l'
+    echo 'fi'
+  } >>"$profile"
+}
+
+# Offers to make zsh start on login, since installing zsh and linking
+# .zshrc doesn't change what a fresh login (e.g. a new SSH session)
 # actually starts in.
 ensure_default_shell() {
-  local zsh_bin
-  zsh_bin="$(command -v zsh)"
-  [ -z "$zsh_bin" ] && return 1
-  [ "$(current_login_shell)" = "$zsh_bin" ] && return 0
+  have zsh || return 1
+  grep -q '# initialize.sh: exec zsh' "$HOME/.profile" 2>/dev/null && return 0
+  [ "$(current_login_shell)" = "$(command -v zsh)" ] && return 0
 
-  confirm "Set zsh ($zsh_bin) as your default login shell?" || return 1
+  confirm "Make new login shells start in zsh (via ~/.profile)?" || return 1
 
-  if ! grep -qxF "$zsh_bin" /etc/shells 2>/dev/null; then
-    echo "$zsh_bin" | sudo tee -a /etc/shells >/dev/null
-  fi
-
-  chsh -s "$zsh_bin"
+  exec_zsh_from_profile
+  return 2
 }
 
 # Runs the check -> (offer install) -> link flow for a single tool.
@@ -145,8 +157,9 @@ link_zsh() {
   echo "Setting up zsh configuration..."
   link_file "$HOME/.zshrc" "$CONFIG_DIR/zshrc/.zshrc"
 
-  if ensure_default_shell; then
-    echo "Default shell set to zsh — log out and back in (or start a new SSH session) for it to take effect."
+  ensure_default_shell
+  if [ $? -eq 2 ]; then
+    echo "New login shells will now start in zsh — log out and back in (or start a new SSH session) for it to take effect."
   fi
 }
 
