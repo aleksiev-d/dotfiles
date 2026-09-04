@@ -21,6 +21,7 @@ ensure_brew() {
 
   confirm "Homebrew is not installed. Install it now?" || return 1
 
+  BREW_FRESHLY_INSTALLED=1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   local brew_bin
@@ -128,3 +129,8 @@ setup_tool "Neovim"           check_nvim       install_nvim       link_nvim
 setup_tool "kitty"            check_kitty      install_kitty      link_kitty
 setup_tool "AeroSpace"        check_aerospace  install_aerospace  link_aerospace
 setup_tool "lazygit"          check_lazygit    install_lazygit    link_lazygit
+
+if [ -n "$BREW_FRESHLY_INSTALLED" ]; then
+  echo
+  echo "Homebrew was just installed — open a new shell (or run 'source ~/.zshrc') so newly installed tools are on your PATH."
+fi
