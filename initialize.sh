@@ -13,6 +13,25 @@ confirm() { read -r -p "$1 [y/N] " reply; [[ "$reply" =~ ^[Yy]$ ]]; }
 link_file() { rm -f "$1"; ln -s "$2" "$1"; }
 link_dir()  { rm -rf "$1"; ln -s "$2" "$1"; }
 
+# Installs Homebrew itself if it's missing, and makes it available on PATH
+# for the rest of this script's run. Returns failure if brew still isn't
+# available afterward (install declined or failed).
+ensure_brew() {
+  have brew && return 0
+
+  confirm "Homebrew is not installed. Install it now?" || return 1
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -x /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  have brew
+}
+
 # Runs the check -> (offer install) -> link flow for a single tool.
 setup_tool() {
   local name="$1" check_fn="$2" install_fn="$3" link_fn="$4"
@@ -21,10 +40,10 @@ setup_tool() {
 
   if ! "$check_fn"; then
     if confirm "$name is not installed. Install it now via Homebrew?"; then
-      if have brew; then
+      if ensure_brew; then
         "$install_fn"
       else
-        echo "Homebrew not found — install $name manually, then re-run this script."
+        echo "Homebrew is required to install $name automatically — install $name manually, then re-run this script."
       fi
     fi
     if ! "$check_fn"; then
