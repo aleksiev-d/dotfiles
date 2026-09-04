@@ -47,4 +47,8 @@ export PATH="/opt/nvim/bin:$PATH"
 alias python=python3
 alias pip=pip3
 
+# Auto-copies kitty's terminfo to the remote host on connect, so backspace
+# and friends work even on machines that don't know about xterm-kitty.
+[ "$TERM" = "xterm-kitty" ] && command -v kitty >/dev/null 2>&1 && alias ssh="kitty +kitten ssh"
+
 [ -f "/Users/danailaleksiev/.ghcup/env" ] && . "/Users/danailaleksiev/.ghcup/env" # ghcup-env
