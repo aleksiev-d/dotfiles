@@ -20,20 +20,31 @@ configurations/
 
 ## What initialize.sh does
 
-For each managed config it removes whatever occupies the canonical location
-and replaces it with a symlink into this repo:
+`CONFIG_DIR` is resolved from the script's own location, so it works
+regardless of where the repo is cloned.
 
-| Link (where the tool looks)                                    | Real file (in this repo)  |
-| --------------------------------------------------------------| ------------------------- |
-| `~/.zshrc`                                                     | `zshrc/.zshrc`            |
-| `~/.ideavimrc`                                                 | `rider/.ideavimrc`        |
-| `~/Library/Application Support/Code/User/settings.json`        | `vscode/settings.json`    |
-| `~/Library/Application Support/Code/User/keybindings.json`     | `vscode/keybindings.json` |
-| `~/.config/nvim` (whole directory)                             | `nvim/`                   |
-| `~/Library/Application Support/lazygit/config.yml`             | `lazygit/config.yml`      |
+For each managed tool, the script asks whether to set it up:
 
-It then installs every VS Code extension listed in `vscode/extensions.txt`
-via `code --install-extension`.
+- **Not set up** → skipped entirely, nothing touched.
+- **Set up, and the tool is already installed** → whatever occupies the
+  canonical location is removed and replaced with a symlink into this repo.
+- **Set up, but the tool isn't installed** → offers to install it via
+  Homebrew; if you decline (or Homebrew isn't available), the config is left
+  alone.
+
+| Tool      | Link (where the tool looks)                                | Real file (in this repo)  |
+| --------- | ------------------------------------------------------------| ------------------------- |
+| zsh       | `~/.zshrc`                                                   | `zshrc/.zshrc`            |
+| Rider     | `~/.ideavimrc`                                                | `rider/.ideavimrc`        |
+| VS Code   | `~/Library/Application Support/Code/User/settings.json`      | `vscode/settings.json`    |
+| VS Code   | `~/Library/Application Support/Code/User/keybindings.json`   | `vscode/keybindings.json` |
+| Neovim    | `~/.config/nvim` (whole directory)                            | `nvim/`                   |
+| kitty     | `~/.config/kitty` (whole directory)                           | `kitty/`                  |
+| AeroSpace | `~/.aerospace.toml`                                           | `aerospace/.aerospace.toml` |
+| lazygit   | `~/Library/Application Support/lazygit/config.yml`            | `lazygit/config.yml`      |
+
+If VS Code is set up, it also installs every extension listed in
+`vscode/extensions.txt` via `code --install-extension`.
 
 The script is idempotent — rerunning it just recreates identical links, so it
 also works as a repair tool if a link gets clobbered.
