@@ -95,7 +95,7 @@ exec_zsh_from_profile() {
 # actually starts in.
 ensure_default_shell() {
   have zsh || return 1
-  grep -q '# initialize.sh: exec zsh' "$HOME/.profile" 2>/dev/null && return 0
+  grep -q 'exec zsh' "$HOME/.profile" 2>/dev/null && return 0
   [ "$(current_login_shell)" = "$(command -v zsh)" ] && return 0
 
   confirm "Make new login shells start in zsh (via ~/.profile)?" || return 1
