@@ -181,6 +181,13 @@ link_kitty() {
   link_dir "$HOME/.config/kitty" "$CONFIG_DIR/kitty"
 }
 
+check_tmux()   { have tmux; }
+install_tmux() { ensure_brew && brew install tmux; }
+link_tmux() {
+  echo "Setting up tmux configuration..."
+  link_file "$HOME/.tmux.conf" "$CONFIG_DIR/tmux/.tmux.conf"
+}
+
 check_aerospace()   { have aerospace || [ -d "/Applications/AeroSpace.app" ]; }
 install_aerospace() { ensure_brew && brew install --cask nikitabobko/tap/aerospace; }
 link_aerospace() {
@@ -210,6 +217,7 @@ setup_tool "zsh"              check_zsh        install_zsh        link_zsh
 setup_tool "Rider (IdeaVim)"  check_rider      install_rider      link_rider
 setup_tool "Neovim"           check_nvim       install_nvim       link_nvim
 setup_tool "kitty"            check_kitty      install_kitty      link_kitty
+setup_tool "tmux"             check_tmux       install_tmux       link_tmux
 setup_tool "AeroSpace"        check_aerospace  install_aerospace  link_aerospace
 setup_tool "lazygit"          check_lazygit    install_lazygit    link_lazygit
 setup_tool "Herdr"            check_herdr      install_herdr      link_herdr

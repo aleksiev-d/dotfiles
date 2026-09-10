@@ -14,6 +14,8 @@ configurations/
 ├── rider/          # .ideavimrc (IdeaVim, used by Rider)
 ├── vscode/         # settings.json, keybindings.json, extensions.txt
 ├── nvim/           # full Neovim config (LazyVim): init.lua, lua/config, lua/plugins, lazy-lock.json
+├── kitty/          # kitty.conf, current-theme.conf, tab_bar.py (custom tab bar)
+├── tmux/           # .tmux.conf
 ├── lazygit/        # config.yml (delta as the diff pager)
 ├── herdr/          # config.toml (terminal agent multiplexer)
 └── iterm2/         # iTerm2 color presets (.itermcolors)
@@ -41,6 +43,7 @@ For each managed tool, the script asks whether to set it up:
 | VS Code   | `~/Library/Application Support/Code/User/keybindings.json`   | `vscode/keybindings.json` |
 | Neovim    | `~/.config/nvim` (whole directory)                            | `nvim/`                   |
 | kitty     | `~/.config/kitty` (whole directory)                           | `kitty/`                  |
+| tmux      | `~/.tmux.conf`                                                | `tmux/.tmux.conf`         |
 | AeroSpace | `~/.aerospace.toml`                                           | `aerospace/.aerospace.toml` |
 | lazygit   | `~/Library/Application Support/lazygit/config.yml`            | `lazygit/config.yml`      |
 | Herdr     | `~/.config/herdr/config.toml`                                 | `herdr/config.toml`       |
