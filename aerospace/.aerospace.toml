@@ -79,7 +79,6 @@ automatically-unhide-macos-hidden-apps = false
     W = 'secondary'
     E = 'secondary'
     R = 'secondary'
-    T = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

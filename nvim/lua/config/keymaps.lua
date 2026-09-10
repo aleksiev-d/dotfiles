@@ -13,3 +13,13 @@ vim.keymap.set("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 vim.keymap.set("n", "<leader>ga", function()
   require("gitsigns").blame()
 end, { desc = "Blame Buffer" })
+
+vim.keymap.set("n", "<leader>gw", function()
+  if vim.wo.diff then
+    vim.cmd("diffoff!")
+  else
+    local win = vim.api.nvim_get_current_win()
+    vim.cmd("windo diffthis")
+    vim.api.nvim_set_current_win(win)
+  end
+end, { noremap = true, desc = "Git diff (w)indows toggle" })
