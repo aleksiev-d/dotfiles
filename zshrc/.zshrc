@@ -52,3 +52,13 @@ alias pip=pip3
 [ "$TERM" = "xterm-kitty" ] && command -v kitty >/dev/null 2>&1 && alias ssh="kitty +kitten ssh"
 
 [ -f "/Users/danailaleksiev/.ghcup/env" ] && . "/Users/danailaleksiev/.ghcup/env" # ghcup-env
+
+# Self-heal a terminal left in mouse-reporting mode. A TUI that dies with the
+# connection (herdr over a dropped ssh) never sends its disable sequence, so
+# kitty keeps reporting every mouse move and the shell echoes them as
+# "35;61;20M" garbage. Turn the modes off before drawing each prompt, so any
+# stale session is cleared by pressing Enter. Order: X10, button, any-motion
+# tracking, then the SGR and urxvt encodings.
+_disable_stale_mouse_reporting() { print -n '\e[?1000l\e[?1002l\e[?1003l\e[?1006l\e[?1015l' }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _disable_stale_mouse_reporting
